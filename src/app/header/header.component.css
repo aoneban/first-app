@@ -1,0 +1,11 @@
+header
+ {
+  background-color: rgb(42, 165, 132);
+  padding: 20px 0;
+  margin-bottom: 30px;
+ }
+
+ .header-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+ }

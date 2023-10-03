@@ -1,0 +1,10 @@
+<div *ngIf="film">
+  <div class="container">
+    <h2>{{ film.nameRu }}</h2>
+    <h4>{{ film.nameOriginal }}</h4>
+    <img [src]="film.posterUrlPreview" alt="Photo" />
+    <p>Год выпуска: {{ film.year }}</p>
+    <p>Описание: {{ film.description }}</p>
+  </div>
+  <app-footer [contentLoaded]="contentLoaded"></app-footer>
+</div>
