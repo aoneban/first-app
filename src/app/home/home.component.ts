@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DataFilms } from '../data-films';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  filmData: any;
+  filmData: DataFilms | undefined;
   contentLoaded = true;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
       'Content-Type': 'application/json',
     });
 
-    this.http.get(url, { headers: headers })
+    this.http.get<DataFilms>(url, { headers: headers })
       .subscribe(
         (response) => {
           this.filmData = response;

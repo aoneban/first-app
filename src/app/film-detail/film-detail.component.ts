@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilmService } from '../film.service';
+import { DataFilm } from '../data-film';
 
 @Component({
   selector: 'app-film-detail',
@@ -9,7 +10,7 @@ import { FilmService } from '../film.service';
 })
 
 export class FilmDetailComponent implements OnInit {
-  film: any;
+  film: DataFilm | undefined;
   contentLoaded = false;
 
   constructor(
@@ -19,6 +20,7 @@ export class FilmDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFilmDetails();
+    this.contentLoaded = true;
   }
 
   getFilmDetails(): void {
@@ -26,7 +28,6 @@ export class FilmDetailComponent implements OnInit {
     if (id) {
       this.filmService.getFilmDetails(id).subscribe((film) => {
         this.film = film;
-        this.contentLoaded = true;
       });
     }
   }

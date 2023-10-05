@@ -1,11 +1,11 @@
 <div *ngIf="filmData" class="films-wrapper">
   <div class="films-desk">
-    <h2>Названия фильмов:</h2>
+    <h2>List of films:</h2>
     <div class="film-grid">
       <div class="film-card" *ngFor="let film of filmData.films">
         <img [src]="film.posterUrlPreview" class="image" alt="Photo" />
-        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameRu }}</a>
-        <p>Год выпуска: {{ film.year }}</p>
+        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn }}</a>
+        <p>Production year: {{ film.year }}</p>
       </div>
     </div>
   </div>
