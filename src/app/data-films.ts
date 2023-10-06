@@ -3,8 +3,8 @@ export interface DataFilms {
   films: Film[];
 }
 
-interface Film {
-  filmId?: number;
+export interface Film {
+  filmId?: string; //it's mistake
   nameRu?: string;
   nameEn?: string;
   year?: string;

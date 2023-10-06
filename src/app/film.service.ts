@@ -11,7 +11,7 @@ export class FilmService {
 
   constructor(private http: HttpClient) {}
 
-  getFilmDetails(id: string): Observable<any> {
+  getFilmDetails(id: string): Observable<DataFilm> {
     const url = `${this.apiUrl}${id}`;
     return this.http.get<DataFilm>(url, {
       headers: {

@@ -9,5 +9,10 @@
       </div>
     </div>
   </div>
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">prev</button>
+    <p>{{ currentPage }}</p>
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">next</button>
+  </div>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>
