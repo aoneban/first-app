@@ -19,3 +19,9 @@ export interface Film {
   isRatingUp?: boolean | null;
   isAfisha?: number;
 }
+
+export interface FilmSearch {
+  keyword?: string;
+  pagesCount?: number;
+  films: Film[];
+}

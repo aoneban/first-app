@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataFilms } from '../data-films';
+import { FilmSearch } from '../data-films';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,12 @@ import { DataFilms } from '../data-films';
 })
 export class HomeComponent implements OnInit {
   filmData: DataFilms | undefined;
+  filmDataSearch: FilmSearch | undefined;
   contentLoaded: boolean = true;
   currentPage: number = 1;
   totalPages: number = 1;
-  apiKey: string = '750447c2-3f08-4a4a-b7ea-2dc529472642';
+  APIKEY: string = '750447c2-3f08-4a4a-b7ea-2dc529472642';
+  searchKeyword: string = ''
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -22,7 +25,7 @@ export class HomeComponent implements OnInit {
     const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${page}`;
 
     const headers = new HttpHeaders({
-      'X-API-KEY': this.apiKey,
+      'X-API-KEY': this.APIKEY,
       'Content-Type': 'application/json',
     });
 
@@ -37,6 +40,33 @@ export class HomeComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  loadFilmData() {
+    let url = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=`;
+
+    if (this.searchKeyword) {
+      url += `${this.searchKeyword}`;
+    }
+
+    const headers = new HttpHeaders({
+      'X-API-KEY': this.APIKEY,
+      'Content-Type': 'application/json',
+    });
+
+    this.http.get<FilmSearch>(url, { headers: headers })
+      .subscribe(
+        (response) => {
+          this.filmDataSearch = response;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+  searchFilms() {
+    this.loadFilmData();
   }
 
   goToNextPage() {
@@ -57,7 +87,7 @@ export class HomeComponent implements OnInit {
     const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${this.currentPage}`;
 
     const headers = new HttpHeaders({
-      'X-API-KEY': this.apiKey,
+      'X-API-KEY': this.APIKEY,
       'Content-Type': 'application/json',
     });
 

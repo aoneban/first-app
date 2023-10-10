@@ -55,3 +55,20 @@ button {
 button:hover {
   background-color: rgb(191, 120, 69)
 }
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 20px auto;
+}
+.searchInput
+{
+  width: 70%;
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-size: 16px;
+  padding-left: 10px;
+}

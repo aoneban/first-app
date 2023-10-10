@@ -1,8 +1,12 @@
-<div *ngIf="filmData" class="films-wrapper">
+<div *ngIf="filmDataSearch" class="films-wrapper">
   <div class="films-desk">
+    <div class="input-wrapper">
+      <input class="searchInput" type="text" [(ngModel)]="searchKeyword" placeholder="Search movie">
+      <button (click)="searchFilms()">Search</button>
+    </div>
     <h2>List of films:</h2>
     <div class="film-grid">
-      <div class="film-card" *ngFor="let film of filmData.films">
+      <div class="film-card" *ngFor="let film of filmDataSearch.films">
         <img [src]="film.posterUrlPreview" class="image" alt="Photo" />
         <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn }}</a>
         <p>Production year: {{ film.year }}</p>
@@ -16,3 +20,27 @@
   </div>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>
+
+<div *ngIf="!filmDataSearch" class="films-wrapper">
+  <div class="films-desk">
+    <div class="input-wrapper">
+      <input class="searchInput" type="text" [(ngModel)]="searchKeyword" placeholder="Search movie">
+      <button (click)="searchFilms()">Search</button>
+    </div>
+    <h2>List of films:</h2>
+    <div class="film-grid">
+      <div class="film-card" *ngFor="let film of filmData?.films">
+        <img [src]="film.posterUrlPreview" class="image" alt="Photo" />
+        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn }}</a>
+        <p>Production year: {{ film.year }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">prev</button>
+    <p>{{ currentPage }}</p>
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">next</button>
+  </div>
+  <app-footer [contentLoaded]="contentLoaded"></app-footer>
+</div>
+
