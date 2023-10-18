@@ -5,6 +5,8 @@
     <p>Production year: {{ film.year }}</p>
     <p>Description: {{ film.description }}</p>
   </div>
-  <app-actors-detail></app-actors-detail>
+  <button (click)="showActors = !showActors">Показать актеров</button>
+
+  <app-actors-detail class="wrapper" *ngIf="showActors"></app-actors-detail>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>

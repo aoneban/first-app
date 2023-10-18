@@ -9,6 +9,7 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
+import { ActorsModule } from './actors/actors.module';
 
 
 @NgModule({
@@ -18,13 +19,14 @@ import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
     FilmDetailComponent,
     HeaderComponent,
     FooterComponent,
-    ActorsDetailComponent,
+   ActorsDetailComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ActorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,9 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'film/:id', component: FilmDetailComponent },
+  { path: 'actors',
+    loadChildren: () => import('./actors/actors.module').then((m) => m.ActorsModule)
+  },
 ];
 
 @NgModule({
