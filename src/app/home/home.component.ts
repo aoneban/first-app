@@ -12,10 +12,10 @@ import { FilmSearch } from '../data-films';
 export class HomeComponent implements OnInit {
   filmData: DataFilms | undefined;
   filmDataSearch: FilmSearch | undefined;
-  contentLoaded: boolean = true;
+  contentLoaded: boolean = false;
   currentPage: number = 1;
   totalPages: number = 1;
-  APIKEY: string = '750447c2-3f08-4a4a-b7ea-2dc529472642';
+  APIKEY: string = '8fb3f1d4-57ae-40d8-a0e9-7e563721a82c';
   searchKeyword: string = ''
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
         console.error(error);
       }
     );
+    this.contentLoaded = true;
   }
 
   loadFilmData() {

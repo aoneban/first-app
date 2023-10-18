@@ -1,9 +1,10 @@
 <div *ngIf="film">
   <div class="container">
-    <h1>{{ film.nameOriginal }}</h1>
+    <h1>{{ film.nameOriginal || film.nameRu }}</h1>
     <img [src]="film.posterUrlPreview" alt="Photo" />
     <p>Production year: {{ film.year }}</p>
     <p>Description: {{ film.description }}</p>
   </div>
+  <app-actors-detail></app-actors-detail>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>

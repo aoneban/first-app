@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     FilmDetailComponent,
     HeaderComponent,
     FooterComponent,
+    ActorsDetailComponent,
   ],
   imports: [
     BrowserModule,

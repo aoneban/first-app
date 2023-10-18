@@ -10,6 +10,7 @@ import { DataFilm } from '../data-film';
 })
 
 export class FilmDetailComponent implements OnInit {
+  showActors: any = false;
   film: DataFilm | undefined;
   contentLoaded = false;
 
