@@ -1,9 +1,8 @@
-<div *ngFor="let fil of film">
+<div *ngFor="let data of actorData">
   <div class="container">
-    <h1>{{ fil.nameEn }}</h1>
-    <img [src]="fil.posterUrl" alt="Photo" />
-    <p>Production year: {{ fil.year }}</p>
-    <p>Description: {{ fil.description }}</p>
+    <h1>{{ data.nameEn }}</h1>
+    <img [src]="data.posterUrl" alt="Photo" />
+    <p>Production year: {{ data.year }}</p>
+    <p>Description: {{ data.description }}</p>
   </div>
-  <!-- <app-footer [contentLoaded]="contentLoaded"></app-footer> -->
 </div>

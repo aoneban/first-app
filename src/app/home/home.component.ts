@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { DataFilms } from '../data-films';
-import { FilmSearch } from '../data-films';
+import { DataFilms } from '../intrefaces';
+import { FilmSearch } from '../intrefaces';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -68,6 +69,11 @@ export class HomeComponent implements OnInit {
 
   searchFilms() {
     this.loadFilmData();
+  }
+
+  searchForFilms(keyword: string) {
+    this.searchKeyword = keyword; // Добавьте это, если вы хотите сохранить ключевое слово в HomeComponent
+    this.loadFilmData(); // Вызывайте вашу функцию поиска
   }
 
   goToNextPage() {

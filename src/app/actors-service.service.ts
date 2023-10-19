@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataFilm } from './data-film';
+import { DataFilm } from './intrefaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ActorsServiceService {
-  private apiUrlActors = 'https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=';
+  private apiUrlActors =
+    'https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=';
 
   constructor(private http: HttpClient) {}
 
@@ -20,5 +21,4 @@ export class ActorsServiceService {
       },
     });
   }
-
 }

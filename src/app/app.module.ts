@@ -9,7 +9,8 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
-import { ActorsModule } from './actors/actors.module';
+import { OpinionsComponent } from './opinions/opinions.component';
+import { TruncatePipe } from './truncate.pipe';
 
 
 @NgModule({
@@ -19,14 +20,15 @@ import { ActorsModule } from './actors/actors.module';
     FilmDetailComponent,
     HeaderComponent,
     FooterComponent,
-   ActorsDetailComponent,
+    ActorsDetailComponent,
+    OpinionsComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ActorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

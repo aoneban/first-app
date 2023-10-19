@@ -4,9 +4,14 @@
     <img [src]="film.posterUrlPreview" alt="Photo" />
     <p>Production year: {{ film.year }}</p>
     <p>Description: {{ film.description }}</p>
+    <button (click)="showOpinions = !showOpinions">
+      {{ showOpinions ? 'Hide opinions' : 'Show opinions' }}
+    </button>
+    <button (click)="showActors = !showActors">
+      {{ showActors ? 'Hide actors' : 'Show actors' }}
+    </button>
   </div>
-  <button (click)="showActors = !showActors">Показать актеров</button>
-
   <app-actors-detail class="wrapper" *ngIf="showActors"></app-actors-detail>
+  <app-opinions *ngIf="showOpinions"></app-opinions>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>
