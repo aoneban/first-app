@@ -7,14 +7,16 @@ import { APIKEY } from './data';
 @Injectable({
   providedIn: 'root',
 })
-export class FilmService {
-  private apiUrl = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/';
+export class OpinionsService {
+  private apiUrlOpinionsOne =
+    'https://kinopoiskapiunofficial.tech/api/v2.2/films/';
+  private apiUrlOpinionsTwo = '/reviews?page=1&order=DATE_DESC'
 
   constructor(private http: HttpClient) {}
 
-  getFilmDetails(id: string): Observable<DataFilm> {
-    const url = `${this.apiUrl}${id}`;
-    return this.http.get<DataFilm>(url, {
+  getOpinionDetails(id: string): Observable<any> {
+    const url = `${this.apiUrlOpinionsOne}${id}${this.apiUrlOpinionsTwo}`;
+    return this.http.get(url, {
       headers: {
         'X-API-KEY': APIKEY,
         'Content-Type': 'application/json',

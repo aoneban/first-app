@@ -8,7 +8,7 @@
     <div class="film-grid">
       <div class="film-card" *ngFor="let film of filmDataSearch.films">
         <img [src]="film.posterUrlPreview" class="image" alt="Photo" />
-        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn }}</a>
+        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn || film.nameRu + ' (RU)'}}</a>
         <p>Production year: {{ film.year }}</p>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="film-grid">
       <div class="film-card" *ngFor="let film of filmData?.films">
         <img [src]="film.posterUrlPreview" class="image" alt="Photo" />
-        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn }}</a>
+        <a class="name-film" [routerLink]="['/film', film.filmId]">{{ film.nameEn || film.nameRu + ' (RU)' }}</a>
         <p>Production year: {{ film.year }}</p>
       </div>
     </div>

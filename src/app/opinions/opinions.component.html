@@ -1,0 +1,12 @@
+<div *ngIf="opinionData">
+  <h1>Opinions</h1>
+  <div *ngFor="let data of opinionData.items; let i = index">
+    <div class="container">
+      <h2>{{ data.author }}</h2>
+      <h3>Title: {{ data.type }}</h3>
+      <p>Title: {{ data.title }}</p>
+      <p>Description: {{ data.description ? (data.description | truncate:30:isExpanded(i)) : '' }}</p>
+      <button (click)="toggleDescription(i)">Show {{ isExpanded(i) ? 'Less' : 'More' }}</button>
+    </div>
+  </div>
+</div>

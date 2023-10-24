@@ -1,9 +1,23 @@
 <div *ngIf="film">
   <div class="container">
-    <h1>{{ film.nameOriginal }}</h1>
+    <h1>{{ film.nameOriginal || film.nameRu }}</h1>
     <img [src]="film.posterUrlPreview" alt="Photo" />
     <p>Production year: {{ film.year }}</p>
     <p>Description: {{ film.description }}</p>
+    <button (click)="toggleComponent('opinions')">
+      {{ showOpinions ? 'Hide opinions' : 'Show opinions' }}
+    </button>
+
+    <button (click)="toggleComponent('actors')">
+      {{ showActors ? 'Hide actors' : 'Show actors' }}
+    </button>
+
+    <button (click)="toggleComponent('trailers')">
+      {{ showTrailers ? 'Hide trailers' : 'Show trailers' }}
+    </button>
   </div>
+  <app-actors-detail class="wrapper" *ngIf="showActors"></app-actors-detail>
+  <app-opinions *ngIf="showOpinions"></app-opinions>
+  <app-trailers *ngIf="showTrailers"></app-trailers>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>

@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
+import { OpinionsComponent } from './opinions/opinions.component';
+import { TruncatePipe } from './truncate.pipe';
+import { TrailersComponent } from './trailers/trailers.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,16 @@ import { FooterComponent } from './footer/footer.component';
     FilmDetailComponent,
     HeaderComponent,
     FooterComponent,
+    ActorsDetailComponent,
+    OpinionsComponent,
+    TruncatePipe,
+    TrailersComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

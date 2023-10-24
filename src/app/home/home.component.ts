@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { DataFilms } from '../data-films';
-import { FilmSearch } from '../data-films';
+import { DataFilms } from '../intrefaces';
+import { FilmSearch } from '../intrefaces';
+import { APIKEY } from '../data';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,10 @@ import { FilmSearch } from '../data-films';
 export class HomeComponent implements OnInit {
   filmData: DataFilms | undefined;
   filmDataSearch: FilmSearch | undefined;
-  contentLoaded: boolean = true;
+  contentLoaded: boolean = false;
   currentPage: number = 1;
   totalPages: number = 1;
-  APIKEY: string = '750447c2-3f08-4a4a-b7ea-2dc529472642';
+  APIKEY: string = APIKEY;
   searchKeyword: string = ''
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
         console.error(error);
       }
     );
+    this.contentLoaded = true;
   }
 
   loadFilmData() {
@@ -67,6 +69,11 @@ export class HomeComponent implements OnInit {
 
   searchFilms() {
     this.loadFilmData();
+  }
+
+  searchForFilms(keyword: string) {
+    this.searchKeyword = keyword; // Добавьте это, если вы хотите сохранить ключевое слово в HomeComponent
+    this.loadFilmData(); // Вызывайте вашу функцию поиска
   }
 
   goToNextPage() {
