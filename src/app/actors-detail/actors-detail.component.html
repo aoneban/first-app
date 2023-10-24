@@ -1,6 +1,7 @@
 <div *ngFor="let data of actorData">
   <div class="container">
     <h1>{{ data.nameEn }}</h1>
+    <h2>{{ data.staffId }}</h2>
     <img [src]="data.posterUrl" alt="Photo" />
     <p>Production year: {{ data.year }}</p>
     <p>Description: {{ data.description }}</p>

@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
 import { OpinionsComponent } from './opinions/opinions.component';
 import { TruncatePipe } from './truncate.pipe';
-
+import { TrailersComponent } from './trailers/trailers.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { TruncatePipe } from './truncate.pipe';
     FooterComponent,
     ActorsDetailComponent,
     OpinionsComponent,
-    TruncatePipe
+    TruncatePipe,
+    TrailersComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataFilm } from './intrefaces';
+import { APIKEY } from './data';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class OpinionsService {
     const url = `${this.apiUrlOpinionsOne}${id}${this.apiUrlOpinionsTwo}`;
     return this.http.get(url, {
       headers: {
-        'X-API-KEY': '8fb3f1d4-57ae-40d8-a0e9-7e563721a82c',
+        'X-API-KEY': APIKEY,
         'Content-Type': 'application/json',
       },
     });

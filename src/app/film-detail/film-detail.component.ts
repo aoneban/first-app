@@ -11,6 +11,7 @@ import { DataFilm } from '../intrefaces';
 export class FilmDetailComponent implements OnInit {
   showActors: boolean = false;
   showOpinions: boolean = false;
+  showTrailers: boolean = false;
   film: DataFilm | undefined;
   contentLoaded = false;
 
@@ -30,6 +31,27 @@ export class FilmDetailComponent implements OnInit {
       this.filmService.getFilmDetails(id).subscribe((film) => {
         this.film = film;
       });
+    }
+  }
+  toggleComponent(componentName: string): void {
+    if (componentName === 'opinions') {
+      this.showOpinions = !this.showOpinions;
+      if (this.showOpinions) {
+        this.showActors = false;
+        this.showTrailers = false;
+      }
+    } else if (componentName === 'actors') {
+      this.showActors = !this.showActors;
+      if (this.showActors) {
+        this.showOpinions = false;
+        this.showTrailers = false;
+      }
+    } else if (componentName === 'trailers') {
+      this.showTrailers = !this.showTrailers;
+      if (this.showTrailers) {
+        this.showOpinions = false;
+        this.showActors = false;
+      }
     }
   }
 }

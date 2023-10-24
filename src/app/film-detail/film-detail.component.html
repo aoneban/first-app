@@ -4,14 +4,20 @@
     <img [src]="film.posterUrlPreview" alt="Photo" />
     <p>Production year: {{ film.year }}</p>
     <p>Description: {{ film.description }}</p>
-    <button (click)="showOpinions = !showOpinions">
+    <button (click)="toggleComponent('opinions')">
       {{ showOpinions ? 'Hide opinions' : 'Show opinions' }}
     </button>
-    <button (click)="showActors = !showActors">
+
+    <button (click)="toggleComponent('actors')">
       {{ showActors ? 'Hide actors' : 'Show actors' }}
+    </button>
+
+    <button (click)="toggleComponent('trailers')">
+      {{ showTrailers ? 'Hide trailers' : 'Show trailers' }}
     </button>
   </div>
   <app-actors-detail class="wrapper" *ngIf="showActors"></app-actors-detail>
   <app-opinions *ngIf="showOpinions"></app-opinions>
+  <app-trailers *ngIf="showTrailers"></app-trailers>
   <app-footer [contentLoaded]="contentLoaded"></app-footer>
 </div>

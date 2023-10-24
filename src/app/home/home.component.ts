@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataFilms } from '../intrefaces';
 import { FilmSearch } from '../intrefaces';
-import { HeaderComponent } from '../header/header.component';
+import { APIKEY } from '../data';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   contentLoaded: boolean = false;
   currentPage: number = 1;
   totalPages: number = 1;
-  APIKEY: string = '8fb3f1d4-57ae-40d8-a0e9-7e563721a82c';
+  APIKEY: string = APIKEY;
   searchKeyword: string = ''
 
   constructor(private http: HttpClient, private router: Router) {}
