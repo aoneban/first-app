@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit {
   }
 
   searchForFilms(keyword: string) {
-    this.searchKeyword = keyword; // Добавьте это, если вы хотите сохранить ключевое слово в HomeComponent
-    this.loadFilmData(); // Вызывайте вашу функцию поиска
+    this.searchKeyword = keyword;
+    this.loadFilmData(); 
   }
 
   goToNextPage() {

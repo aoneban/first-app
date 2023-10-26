@@ -12,6 +12,7 @@ import { ActorsDetailComponent } from './actors-detail/actors-detail.component';
 import { OpinionsComponent } from './opinions/opinions.component';
 import { TruncatePipe } from './truncate.pipe';
 import { TrailersComponent } from './trailers/trailers.component';
+import { ActorPersonalComponent } from './actor-personal/actor-personal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TrailersComponent } from './trailers/trailers.component';
     ActorsDetailComponent,
     OpinionsComponent,
     TruncatePipe,
-    TrailersComponent
+    TrailersComponent,
+    ActorPersonalComponent
   ],
   imports: [
     BrowserModule,

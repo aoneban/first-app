@@ -1,9 +1,8 @@
 <div *ngFor="let data of actorData">
   <div class="container">
     <h1>{{ data.nameEn }}</h1>
-    <h2>{{ data.staffId }}</h2>
+    <a class="name-film" [routerLink]="['/actor', data.staffId]">{{ data.staffId }}</a>
     <img [src]="data.posterUrl" alt="Photo" />
-    <p>Production year: {{ data.year }}</p>
-    <p>Description: {{ data.description }}</p>
+    <p>Description: {{ data.professionKey }}</p>
   </div>
 </div>
