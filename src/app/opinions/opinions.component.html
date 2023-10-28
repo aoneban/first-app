@@ -1,7 +1,6 @@
 <div *ngIf="opinionData">
-  <h1>Opinions</h1>
-  <div *ngFor="let data of opinionData.items; let i = index">
-    <div class="container">
+  <div class="container">
+    <div *ngFor="let data of opinionData.items; let i = index">
       <h2>{{ data.author }}</h2>
       <h3>Title: {{ data.type }}</h3>
       <p>Title: {{ data.title }}</p>

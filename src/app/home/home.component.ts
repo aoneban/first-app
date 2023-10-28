@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataFilms } from '../intrefaces';
 import { FilmSearch } from '../intrefaces';
 import { APIKEY } from '../data';
+import { StartLoadService } from '../start-load.service';
 
 @Component({
   selector: 'app-home',
@@ -11,101 +11,46 @@ import { APIKEY } from '../data';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  filmData: DataFilms | undefined;
-  filmDataSearch: FilmSearch | undefined;
+  filmData: DataFilms | any;
+  filmDataArray: any;
   contentLoaded: boolean = false;
   currentPage: number = 1;
   totalPages: number = 1;
   APIKEY: string = APIKEY;
-  searchKeyword: string = ''
+  pagesCount: number = 1
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private router: Router,
+    private startLoadService: StartLoadService,
+    ) {}
 
   ngOnInit(): void {
-    const page = 1;
-    const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${page}`;
+    this.startLoad(this.currentPage);
+  }
 
-    const headers = new HttpHeaders({
-      'X-API-KEY': this.APIKEY,
-      'Content-Type': 'application/json',
-    });
-
-    this.http.get<DataFilms>(url, { headers: headers }).subscribe(
-      (response) => {
+  startLoad(currentPage: number) {
+      this.startLoadService.getStartLoad(currentPage).subscribe((response) => {
         if (response && response.pagesCount) {
           this.totalPages = response.pagesCount;
           this.filmData = response;
+          this.filmDataArray = this.filmData.films
         }
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+      });
     this.contentLoaded = true;
-  }
-
-  loadFilmData() {
-    let url = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=`;
-
-    if (this.searchKeyword) {
-      url += `${this.searchKeyword}`;
-    }
-
-    const headers = new HttpHeaders({
-      'X-API-KEY': this.APIKEY,
-      'Content-Type': 'application/json',
-    });
-
-    this.http.get<FilmSearch>(url, { headers: headers })
-      .subscribe(
-        (response) => {
-          this.filmDataSearch = response;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-  }
-
-  searchFilms() {
-    this.loadFilmData();
-  }
-
-  searchForFilms(keyword: string) {
-    this.searchKeyword = keyword;
-    this.loadFilmData(); 
   }
 
   goToNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.updatePageData();
+      this.startLoad(this.currentPage);
     }
   }
 
   goToPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.updatePageData();
+      this.startLoad(this.currentPage);
     }
-  }
-
-  updatePageData() {
-    const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${this.currentPage}`;
-
-    const headers = new HttpHeaders({
-      'X-API-KEY': this.APIKEY,
-      'Content-Type': 'application/json',
-    });
-
-    this.http.get<DataFilms>(url, { headers: headers }).subscribe(
-      (response) => {
-        this.filmData = response;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
   }
 
   openFilmDetails(filmId: number) {

@@ -1,4 +1,5 @@
 export interface DataFilm {
+  pagesCount: number;
   kinopoiskId: number;
   nameRu: string;
   nameEn: string;
