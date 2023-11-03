@@ -1,9 +1,5 @@
 <div *ngIf="filmDataArray" class="films-wrapper">
   <div class="films-desk">
-    <!-- <div class="input-wrapper">
-      <input class="searchInput" type="text" [(ngModel)]="searchKeyword" placeholder="Search movie">
-      <button (click)="searchFilms()">Search</button>
-    </div> -->
     <h2>List of films:</h2>
     <div class="film-grid">
       <div class="film-card" *ngFor="let film of filmDataArray">

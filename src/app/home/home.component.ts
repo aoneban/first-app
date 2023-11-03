@@ -4,6 +4,8 @@ import { DataFilms } from '../intrefaces';
 import { FilmSearch } from '../intrefaces';
 import { APIKEY } from '../data';
 import { StartLoadService } from '../start-load.service';
+import { DataSharingService } from '../data-sharing.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +24,33 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private startLoadService: StartLoadService,
+    private dataSharingService: DataSharingService
     ) {}
 
   ngOnInit(): void {
-    this.startLoad(this.currentPage);
+    this.dataSharingService.searchQuery$
+    .pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((searchQuery) => {
+      if (searchQuery) {
+        this.dataSharingService.searchMovies(searchQuery).subscribe(
+          (result) => {
+            this.filmDataArray = result;
+            this.filmDataArray = this.filmDataArray.films;
+          },
+          (error) => {
+            console.error('Ошибка:', error);
+          }
+        );
+      } else {
+        this.startLoad(this.currentPage);
+      }
+    });
+    this.dataSharingService.loadRequested.subscribe((pageNumber) => {
+      this.currentPage = 1;
+      this.startLoad(pageNumber);
+    });
   }
 
   startLoad(currentPage: number) {
