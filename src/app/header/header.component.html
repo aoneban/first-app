@@ -1,7 +1,10 @@
 <header>
   <div class="header-wrapper">
-    <a routerLink="/">Logo</a>
+    <a routerLink="/" (click)="requestLoad()">Logo</a>
     <h1>HEADER</h1>
+    <div class="input-wrapper">
+      <input class="searchInput" type="text" [(ngModel)]="searchQuery" placeholder="Search movie" (input)="onSearchInput()">
+    </div>
     <p>Additional text</p>
   </div>
 </header>
